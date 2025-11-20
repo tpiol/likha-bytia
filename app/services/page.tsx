@@ -9,10 +9,11 @@ export default function ServicesPage() {
         Custom-coded, modern websites built clean, simple, and professional — without templates.
       </p>
 
+      {/* MAIN WEBSITE PACKAGES */}
       <div className="pricing-grid">
 
         {/* Starter */}
-        <article className="pricing-card">
+        <article className="service-card">
           <h2>Starter Website</h2>
           <p className="price">$450 <span className="price-note">one-time</span></p>
           <p className="tagline">Perfect for personal brands and creatives.</p>
@@ -27,7 +28,7 @@ export default function ServicesPage() {
         </article>
 
         {/* Business */}
-        <article className="pricing-card highlight">
+        <article className="service-card highlight">
           <h2>Business Website</h2>
           <p className="price">$1,200 <span className="price-note">one-time</span></p>
           <p className="tagline">A full, professional online presence.</p>
@@ -42,7 +43,7 @@ export default function ServicesPage() {
         </article>
 
         {/* Premium */}
-        <article className="pricing-card">
+        <article className="service-card">
           <h2>Premium Brand Website</h2>
           <p className="price">$2,000+ <span className="price-note">one-time</span></p>
           <p className="tagline">For elevated brands & luxury identity.</p>
@@ -58,14 +59,67 @@ export default function ServicesPage() {
 
       </div>
 
-      {/* Maintenance */}
+
+      {/* WEBSITE REFRESH / CLEANUP */}
+      <section className="services-refresh">
+        <h2 className="services-subtitle">Website Refresh & Cleanup</h2>
+        <p className="services-intro">
+          Already have a website? I offer three affordable tiers to elevate your existing
+          WordPress, Wix, Squarespace, or Shopify site.
+        </p>
+
+        <div className="refresh-grid">
+
+          <article className="service-card">
+            <h3>Basic Cleanup</h3>
+            <p className="price">$95 <span className="price-note">one-time</span></p>
+            <ul>
+              <li>Minor layout fixes</li>
+              <li>Replace up to 5 images</li>
+              <li>Update fonts & colors</li>
+              <li>Fix spacing & alignment</li>
+              <li>Cleanup for 1–2 pages</li>
+            </ul>
+          </article>
+
+          <article className="service-card highlight">
+            <h3>Standard Refresh</h3>
+            <p className="price">$175 <span className="price-note">one-time</span></p>
+            <ul>
+              <li>Everything in Basic Cleanup</li>
+              <li>Homepage redesign</li>
+              <li>Updated navigation</li>
+              <li>Brand styling refresh</li>
+              <li>Content updates on 3 pages</li>
+              <li>Fix forms & buttons</li>
+            </ul>
+          </article>
+
+          <article className="service-card">
+            <h3>Full Website Revamp</h3>
+            <p className="price">$350 <span className="price-note">one-time</span></p>
+            <ul>
+              <li>Everything in Standard Refresh</li>
+              <li>Full visual rebrand</li>
+              <li>Homepage + 5 pages refreshed</li>
+              <li>Light SEO improvements</li>
+              <li>Mobile optimization</li>
+              <li>Speed & performance fixes</li>
+            </ul>
+          </article>
+
+        </div>
+      </section>
+
+
+      {/* MONTHLY HOSTING */}
       <section className="services-maintenance">
         <h2>Monthly Hosting & Maintenance</h2>
         <p>Keep your site secure, updated, and online — without stress.</p>
 
         <div className="maintenance-grid">
 
-          <article className="maintenance-card">
+          <article className="service-card">
             <h3>Basic Hosting</h3>
             <p className="price">$35<span className="price-note">/month</span></p>
             <ul>
@@ -76,7 +130,7 @@ export default function ServicesPage() {
             </ul>
           </article>
 
-          <article className="maintenance-card">
+          <article className="service-card">
             <h3>Standard Care</h3>
             <p className="price">$79<span className="price-note">/month</span></p>
             <ul>
@@ -86,7 +140,7 @@ export default function ServicesPage() {
             </ul>
           </article>
 
-          <article className="maintenance-card">
+          <article className="service-card">
             <h3>Premium Support</h3>
             <p className="price">$150<span className="price-note">/month</span></p>
             <ul>
@@ -99,6 +153,7 @@ export default function ServicesPage() {
 
         </div>
       </section>
+
     </main>
   );
 }

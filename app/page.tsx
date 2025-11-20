@@ -18,15 +18,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="home-image-wrap">
-        <Image
-          src="/tia4.jpeg"
-          alt="Travel editorial aesthetic"
-          width={2000}
-          height={1300}
-          className="home-feature-image"
-        />
-      </section>
+   
 
     </main>
   );
