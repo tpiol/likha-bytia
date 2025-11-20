@@ -1,26 +1,481 @@
-@import "tailwindcss";
+/* ===========================================
+   FONTS
+=========================================== */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
 
+/* ===========================================
+   ROOT VARIABLES (Brand)
+=========================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-heading: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+
+  --color-black: #111;
+  --color-gray: #4b4b4b;
+  --color-light: #fafafa;
+  --color-accent: #6f8f72; /* sage green */
+
+  --radius-soft: 1rem;
+  --radius-full: 999px;
+
+  --shadow-soft: 0 10px 25px rgba(0,0,0,0.08);
+  --shadow-light: 0 4px 12px rgba(0,0,0,0.05);
+
+  --max-width: 1100px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ===========================================
+   RESET
+=========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html, body {
+  background: #f5f5f5;
+  color: var(--color-black);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+/* Global container */
+.container,
+.home-container,
+.about-container,
+.portfolio,
+.contact {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+/* ===========================================
+   NAVIGATION (Luxury)
+=========================================== */
+.site-header {
+  width: 100%;
+  background: white;
+  padding: 1.2rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  backdrop-filter: blur(8px);
+}
+
+.nav-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo img {
+  width: 150px;
+  height: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.25rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-family: var(--font-heading);
+  color: var(--color-black);
+  font-size: 1.05rem;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: var(--color-accent);
+  transition: 0.25s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: var(--color-accent);
+}
+
+/* ===========================================
+   BUTTONS
+=========================================== */
+.btn-primary {
+  background: var(--color-black);
+  color: white;
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent);
+}
+
+.btn-secondary {
+  border: 1.5px solid var(--color-black);
+  color: var(--color-black);
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ===========================================
+   HOMEPAGE
+=========================================== */
+.hero-simple {
+  text-align: center;
+  margin: 4rem 0 3rem;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  max-width: 550px;
+  margin: 0 auto 2rem;
+  font-size: 1.15rem;
+  color: var(--color-gray);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.home-feature-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ===========================================
+   ABOUT — 3 PHOTO EDITORIAL ROW
+=========================================== */
+.about-gallery {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.about-gallery-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ABOUT — Split layout */
+.about-split {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+~
+.about-img-split {
+  width: 100%;
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.about-right h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.about-right p {
+  font-size: 1.1rem;
+  margin-bottom: 1.1rem;
+  color: var(--color-gray);
+  line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+  .about-gallery {
+    grid-template-columns: 1fr;
+  }
+  .about-split {
+    grid-template-columns: 1fr;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ===========================================
+   SERVICES — Luxury Cards
+=========================================== */
+.services-title {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.services-intro {
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.pricing-grid {
+  display: grid;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+.pricing-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid #eaeaea;
+  box-shadow: var(--shadow-light);
+  transition: 0.25s;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-soft);
+}
+
+.pricing-card.highlight {
+  border: 2px solid var(--color-accent);
+}
+
+.pricing-card h2 {
+  font-size: 1.7rem;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.price {
+  text-align: center;
+  font-size: 1.9rem;
+  font-family: var(--font-heading);
+  margin-bottom: 0.6rem;
+}
+
+.tagline {
+  text-align: center;
+  color: var(--color-gray);
+  margin-bottom: 1.4rem;
+}
+
+.pricing-card ul {
+  list-style: none;
+}
+
+.pricing-card li {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid #efefef;
+  font-size: 0.95rem;
+}
+
+.pricing-card li:last-child {
+  border-bottom: none;
+}
+
+/* Maintenance cards */
+.maintenance-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .maintenance-grid {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+.maintenance-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid #eaeaea;
+  box-shadow: var(--shadow-light);
+}
+
+.maintenance-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ===========================================
+   FAQ
+=========================================== */
+.faq-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .faq-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+.faq-item {
+  background: white;
+  padding: 1.75rem;
+  border-radius: 1rem;
+  border: 1px solid #eaeaea;
+  box-shadow: var(--shadow-light);
+}
+
+/* ===========================================
+   PORTFOLIO (for real client sites)
+=========================================== */
+.portfolio-title {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.portfolio-sub {
+  text-align: center;
+  color: var(--color-gray);
+  margin-bottom: 2rem;
+}
+
+.portfolio-grid {
+  display: grid;
+  gap: 1.75rem;
+}
+
+@media (min-width: 900px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+.portfolio-item {
+  width: 100%;
+  border-radius: var(--radius-soft);
+  object-fit: cover;
+  height: 350px;
+  box-shadow: var(--shadow-soft);
+  transition: 0.2s ease;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.02);
+}
+
+/* ===========================================
+   CONTACT PAGE
+=========================================== */
+.contact-intro {
+  max-width: 550px;
+  margin-bottom: 2rem;
+  color: var(--color-gray);
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+  max-width: 600px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: var(--radius-soft);
+  border: 1px solid #dcdcdc;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--color-accent);
+}
+
+/* ===========================================
+   FOOTER
+=========================================== */
+.site-footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--color-gray);
+  font-size: 0.95rem;
+}
+
+/* ===========================================
+   PORTFOLIO — PLACEHOLDER CARD DESIGN
+=========================================== */
+
+.portfolio-card {
+  background: white;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid #eaeaea;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.12);
+}
+
+.portfolio-img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border-radius: var(--radius-soft);
+  margin-bottom: 1rem;
+}
+
+.portfolio-item-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.portfolio-item-desc {
+  font-size: 1rem;
+  color: var(--color-gray);
+  margin-bottom: 1rem;
+}
+
+.portfolio-link {
+  font-size: 0.95rem;
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  text-decoration: underline;
+  cursor: default;
 }
